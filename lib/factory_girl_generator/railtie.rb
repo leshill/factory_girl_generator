@@ -1,6 +1,7 @@
 module FactoryGirlGenerator
   class Railtie < ::Rails::Railtie
-    config.generators.fixture_replacement :factory_girl
-    config.generators.test_unit[:fixture_replacement] = :factory_girl
+    generators = config.respond_to?(:app_generators) ? config.app_generators : config.generators
+    generators.fixture_replacement :factory_girl
+    generators.test_unit[:fixture_replacement] = :factory_girl
   end
 end
